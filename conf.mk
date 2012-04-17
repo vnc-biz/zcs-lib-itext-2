@@ -1,0 +1,17 @@
+VERSION=2.1.7.1
+PACKAGE=zcs-lib-itext-2
+MAINTAINER=Enrico Weigelt <enrico.weigelt@vnc.biz>
+SECTION=base
+ARCHITECTURE=All
+PRIORITY=optional
+DEPENDS=__NONE__
+DESCRIPTION=pdf rendering library
+DISTPREFIX=$(TOPDIR)/dist
+DISTDIR=$(DISTPREFIX)/$(PACKAGE)-$(VERSION)
+DISTFILE=$(DISTPREFIX)/$(PACKAGE)-$(VERSION).tar.gz
+JAVA?=java
+JAR?=jar
+JAVAC?=javac
+IMAGE_ROOT=$(TOPDIR)/image
+REDMINE_UPLOAD_URL=https://redmine.vnc.biz/redmine/
+REDMINE_UPLOAD_PROJECT=zcs-lib-itext

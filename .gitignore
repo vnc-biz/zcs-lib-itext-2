@@ -1,0 +1,6 @@
+/build
+/image
+/lib/iText.jar
+/zimlets.list
+*.deb
+

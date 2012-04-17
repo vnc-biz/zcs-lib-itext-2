@@ -1,0 +1,12 @@
+TOPDIR=../..
+
+BUILD_ANT_SUBDIR=$(TOPDIR)/src
+BUILD_ANT_JARFILE=$(TOPDIR)/lib/iText.jar
+BUILD_ANT_TARGET=jar
+
+INSTALL_USER=y
+INSTALL_ADMIN=y
+INSTALL_SERVICE=y
+INSTALL_LIB=y
+
+include $(TOPDIR)/zcs-java-lib-ant.mk
