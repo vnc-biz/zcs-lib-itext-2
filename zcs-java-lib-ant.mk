@@ -10,48 +10,42 @@ ZIMLET_LIB_JARDIR=lib/jars
 
 all:	build
 
-build:	check build_ant install_lib install_user install_admin install_service
+build:	check build_ant install
 
-check:
+ifeq ($(ZIMBRA_BUILD_ROOT),)
+ZIMBRA_BUILD_ROOT=$(HOME)
+check-1:
+	@echo
+	@echo "ZIMBRA_BUILD_ROOT is not set. assuming $$HOME"
+	@echo
+else
+check-1:
+	@true
+endif
+
+check:	check-1
 ifeq ($(BUILD_ANT_SUBDIR),)
-	@echo "missing $(BUILD_ANT_SUBDIR)" >&2
+	@echo "missing BUILD_ANT_SUBDIR" >&2
 	@exit 1
 endif
 
+install:
+	@true
 ifeq ($(INSTALL_USER),y)
-install_user:	build_ant
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_USER_JARDIR)
 	@cp $(BUILD_ANT_JARFILE) $(IMAGE_ROOT)/$(ZIMLET_USER_JARDIR)
-else
-install_user:
-	@echo -n
 endif
-
 ifeq ($(INSTALL_ADMIN),y)
-install_admin:	build_ant
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_ADMIN_JARDIR)
 	@cp $(BUILD_ANT_JARFILE) $(IMAGE_ROOT)/$(ZIMLET_ADMIN_JARDIR)
-else
-install_admin:
-	@echo -n
 endif
-
 ifeq ($(INSTALL_SERVICE),y)
-install_service:	build_ant
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_SERVICE_JARDIR)
 	@cp $(BUILD_ANT_JARFILE) $(IMAGE_ROOT)/$(ZIMLET_SERVICE_JARDIR)
-else
-install_service:
-	@echo -n
 endif
-
 ifeq ($(INSTALL_LIB),y)
-install_lib:	build_ant
 	@mkdir -p $(IMAGE_ROOT)/$(ZIMLET_LIB_JARDIR)
 	@cp $(BUILD_ANT_JARFILE) $(IMAGE_ROOT)/$(ZIMLET_LIB_JARDIR)
-else
-install_lib:
-	@echo -n
 endif
 
 clean:
