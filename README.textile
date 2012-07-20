@@ -1,0 +1,1 @@
+Zimbra packaged version of the iText java library.
