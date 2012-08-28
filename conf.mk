@@ -1,4 +1,4 @@
-VERSION=2.1.7.1
+VERSION=2.1.7.2
 PACKAGE=zcs-lib-itext-2
 MAINTAINER=Enrico Weigelt <enrico.weigelt@vnc.biz>
 SECTION=base
